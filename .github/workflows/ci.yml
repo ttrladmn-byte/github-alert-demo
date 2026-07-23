@@ -7,5 +7,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Check repository
-        run: echo "Build check passed"
+       - name: Send Slack alert
+        if: always()
+        uses: slackapi/slack-github-action@v4.0.0
+        with:
+          webhook: ${{ secrets.SLACK_WEBHOOK_URL }}
+          webhook-type: incoming-webhook
+          payload: |
+            text: "GitHub Actions alert: ${{ job.status }} for ${{ github.repository }}."
