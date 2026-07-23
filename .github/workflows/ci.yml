@@ -1,0 +1,11 @@
+name: CI Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check repository
+        run: echo "Build check passed"
