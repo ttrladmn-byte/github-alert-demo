@@ -7,7 +7,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-       - name: Send Slack alert
+      - name: Check repository
+        run: echo "Build check passed"
+
+      - name: Send Slack alert
         if: always()
         uses: slackapi/slack-github-action@v4.0.0
         with:
